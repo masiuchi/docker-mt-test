@@ -1,8 +1,18 @@
 sudo: required
 
 services:
-  - docker
+  - $HOME/docker
+
+cache:
+  directories:
+    - .docker
+
+before_script:
+  - if [ -e $HOME/docker/image.tar ]; then docker load -i $HOME/docker/image.tar; fi
 
 script:
   - docker build -t mt-test .
+
+after_success:
+  - docker save mt-test > $HOME/docker/image.tar
 
