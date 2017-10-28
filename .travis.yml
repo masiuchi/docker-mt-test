@@ -7,11 +7,16 @@ cache:
   directories:
     - $HOME/docker
 
+env:
+  matrix:
+    - DOCKERFILE=Dockerfile
+    - DOCKERFILE=Dockerfile.precise
+
 before_script:
   - if [ -e $HOME/docker/image.tar ]; then docker load -i $HOME/docker/image.tar; fi
 
 script:
-  - docker build --rm=false -t mt-test .
+  - docker build --rm=false -t mt-test -f $DOCKERFILE .
 
 before_cache:
   - mkdir -p $HOME/docker; docker save mt-test > $HOME/docker/image.tar
