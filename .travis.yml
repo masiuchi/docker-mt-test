@@ -14,5 +14,5 @@ script:
   - docker build -t mt-test .
 
 before_cache:
-  - docker save mt-test > $HOME/docker/image.tar
+  - mkdir -p $HOME/docker; docker save mt-test > $HOME/docker/image.tar
 
