@@ -13,11 +13,11 @@ env:
     - DOCKERFILE=Dockerfile.precise
 
 before_script:
-  - if [ -e $HOME/docker/image.tar.xz ]; then xz -d $HOME/docker/image.tar.xz; docker load -i $HOME/docker/image.tar; fi
+  - if [ -e $HOME/docker/image.tar.gz ]; then gunzip $HOME/docker/image.tar.gz; docker load -i $HOME/docker/image.tar; fi
 
 script:
   - docker build --rm=false -t mt-test -f $DOCKERFILE .
 
 before_cache:
-  - mkdir -p $HOME/docker; docker save mt-test > $HOME/docker/image.tar; xz $HOME/docker/image.tar
+  - mkdir -p $HOME/docker; docker save mt-test > $HOME/docker/image.tar; gzip $HOME/docker/image.tar
 
