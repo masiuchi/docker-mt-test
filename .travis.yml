@@ -6,7 +6,7 @@ services:
 env:
   matrix:
     - DOCKERFILE=Dockerfile
-    - DOCKERFILE=Dockerfile.precise
+    - DOCKERFILE=Dockerfile.perl-5.18
 
 script:
   - docker build --rm=false -t mt-test -f $DOCKERFILE .
