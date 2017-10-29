@@ -5,9 +5,9 @@ services:
 
 env:
   matrix:
-    - DOCKERFILE=Dockerfile.perl-5.10
-    - DOCKERFILE=Dockerfile.perl-5.18
+    - DOCKER_TAG=perl-5.10
+    - DOCKER_TAG=perl-5.18
 
 script:
-  - docker build --rm=false -t mt-test -f $DOCKERFILE .
+  - docker build -t mt-test -f Dockerfile.$DOCKER_TAG --cache-from masiuchi/docker-mt-test:$DOCKER_TAG .
 
