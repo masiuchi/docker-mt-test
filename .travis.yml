@@ -5,7 +5,7 @@ services:
 
 env:
   matrix:
-    - DOCKERFILE=Dockerfile
+    - DOCKERFILE=Dockerfile.perl-5.10
     - DOCKERFILE=Dockerfile.perl-5.18
 
 script:
