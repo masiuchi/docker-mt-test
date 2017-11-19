@@ -1,9 +1,11 @@
 FROM ubuntu:precise
 
-ENV PERL_VERSION 5.18.4
+ENV PERL_VERSION=5.18.4\
+ DEBIAN_FRONTEND=nointeractive\
+ HOME=/root\
+ PATH=$PATH:/root/.plenv/bin
 
 RUN apt-get update &&\
- DEBIAN_FRONTEND=nointeractive\
  apt-get -y install\
  apache2\
  mysql-server mysql-client\
@@ -16,8 +18,6 @@ RUN mysqld_safe & sleep 10 &&\
  mysql -e "create database mt_test default character set utf8;" &&\
  mysql -e "grant all privileges on mt_test.* to mt@localhost;"
 
-ENV HOME /root
-ENV PATH $PATH:$HOME/.plenv/bin
 RUN git clone git://github.com/tokuhirom/plenv.git $HOME/.plenv &&\
  git clone git://github.com/tokuhirom/Perl-Build.git $HOME/.plenv/plugins/perl-build/ &&\
  echo 'eval "$(plenv init -)"'
