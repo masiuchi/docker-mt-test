@@ -12,7 +12,7 @@ RUN apt-get update &&\
  memcached\
  php5 php5-cli php5-mysql php5-gd php5-memcache\
  git make gcc wget curl unzip bzip2\
- libssl-dev libgmp-dev libgd2-xpm-dev libxml2-dev libmysql++-dev libgif-dev libdb-dev
+ libssl-dev libgmp-dev libgd2-xpm-dev libpng12-dev libgif-dev libjpeg-dev netpbm libxml2-dev libmysql++-dev libgif-dev libdb-dev
 
 WORKDIR /root
 RUN  wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2 &&\
