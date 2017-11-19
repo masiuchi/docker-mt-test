@@ -25,10 +25,10 @@ RUN plenv install 5.18.4 -Duseshrplib &&\
  plenv rehash
 RUN plenv install-cpanm
 
-RUN plenv exec cpanm Alien::ImageMagick JSON::XS
+RUN plenv exec cpanm --quiet Alien::ImageMagick JSON::XS
 
 WORKDIR /root
 COPY t/cpanfile .
-RUN plenv exec cpanm --installdeps . &&\
+RUN plenv exec cpanm --quiet --installdeps . &&\
  rm -rf cpanfile /root/.cpanm/
 
