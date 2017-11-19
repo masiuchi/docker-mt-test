@@ -8,10 +8,6 @@ env:
     - DOCKER_TAG=perl-5.10
     - DOCKER_TAG=perl-5.18
 
-before_script:
-  - t/git-mtime t/git-mtime t/cpanfile t/ldif/cn=config.ldif t/ldif/domain1_example_jp.ldif t/ldif/domain2_example_jp.ldif t/ldif/example_com.ldif t/ldif/example_jp.ldif
-  - docker pull masiuchi/docker-mt-test:$DOCKER_TAG
-
 script:
   - docker build -t mt-test -f Dockerfile.$DOCKER_TAG --cache-from masiuchi/docker-mt-test:$DOCKER_TAG .
 
