@@ -1,5 +1,7 @@
 FROM ubuntu:precise
 
+ENV PERL_VERSION 5.18.4
+
 RUN apt-get update &&\
  DEBIAN_FRONTEND=nointeractive\
  apt-get -y install\
@@ -20,8 +22,8 @@ RUN git clone git://github.com/tokuhirom/plenv.git $HOME/.plenv &&\
  git clone git://github.com/tokuhirom/Perl-Build.git $HOME/.plenv/plugins/perl-build/ &&\
  echo 'eval "$(plenv init -)"'
 
-RUN plenv install 5.18.4 -Duseshrplib &&\
- plenv global 5.18.4 &&\
+RUN plenv install ${PERL_VERSION} -Duseshrplib &&\
+ plenv global ${PERL_VERSION} &&\
  plenv rehash
 RUN plenv install-cpanm
 
