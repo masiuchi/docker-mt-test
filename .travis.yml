@@ -8,6 +8,9 @@ env:
     - DOCKER_TAG=perl-5.10
     - DOCKER_TAG=perl-5.18
 
+before_script:
+  - docker pull masiuchi/docker-mt-test:$DOCKER_TAG
+
 script:
   - docker build -t mt-test -f Dockerfile.$DOCKER_TAG --cache-from masiuchi/docker-mt-test:$DOCKER_TAG .
 
