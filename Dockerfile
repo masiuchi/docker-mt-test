@@ -28,7 +28,7 @@ RUN plenv install-cpanm
 RUN plenv exec cpanm --quiet Alien::ImageMagick JSON::XS
 
 WORKDIR /root
-COPY t/cpanfile .
+COPY movabletype/t/cpanfile .
 RUN plenv exec cpanm --quiet --installdeps . &&\
  rm -rf cpanfile /root/.cpanm/
 

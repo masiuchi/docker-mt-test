@@ -1,0 +1,5 @@
+[submodule "movabletype"]
+    path = movabletype
+    url = https://github.com/movabletype/movabletype
+    branch = develop
+    shallow = true
