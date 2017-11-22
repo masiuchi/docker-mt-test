@@ -3,9 +3,6 @@ sudo: required
 services:
   - docker
 
-before_script:
-  - docker pull masiuchi/docker-mt-test:perl-5.18
-
 script:
-  - docker build -t docker-mt-test --cache-from masiuchi/docker-mt-test:perl-5.18 .
+  - docker build -t docker-mt-test .
 
