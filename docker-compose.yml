@@ -1,0 +1,36 @@
+version: '3'
+
+volumes:
+  mysql_pid:
+
+services:
+  app:
+    build: .
+    volumes:
+      - ./movabletype:/root/movabletype
+      - mysql_pid:/var/run/mysqld
+    working_dir: /root/movabletype
+    network_mode: host
+    depends_on:
+      - mysql
+      - memcached
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - mysql_pid:/var/run/mysqld
+    ports:
+      - 3306:3306
+    network_mode: host
+    environment:
+      MYSQL_DATABASE: mt_test
+      MYSQL_USER: mt
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+  memcached:
+    image: memcached:alpine
+    ports:
+      - 11211:11211
+    network_mode: host
+
