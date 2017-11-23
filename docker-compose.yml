@@ -1,14 +1,14 @@
 version: '3'
 
 volumes:
-  mysql_pid:
+  mysql_socket:
 
 services:
   app:
     build: .
     volumes:
       - ./movabletype:/root/movabletype
-      - mysql_pid:/var/run/mysqld
+      - mysql_socket:/var/run/mysqld
     working_dir: /root/movabletype
     network_mode: host
     depends_on:
@@ -18,7 +18,7 @@ services:
   mysql:
     image: mysql:5.7
     volumes:
-      - mysql_pid:/var/run/mysqld
+      - mysql_socket:/var/run/mysqld
     ports:
       - 3306:3306
     network_mode: host
