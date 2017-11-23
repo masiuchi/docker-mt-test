@@ -1,37 +1,10 @@
 version: '3'
 
-volumes:
-  mysql_socket:
-
 services:
   mt-test:
     build: .
     volumes:
       - ./:/root
-      - mysql_socket:/var/run/mysqld
     working_dir: /root/movabletype
-    command: bash -c "bash ../preprocess.sh && prove t plugins/*/t && phpunit"
-    network_mode: host
-    depends_on:
-      - mysql
-      - memcached
-
-  mysql:
-    image: mysql:5.7
-    volumes:
-      - mysql_socket:/var/run/mysqld
-    ports:
-      - 3306:3306
-    network_mode: host
-    environment:
-      MYSQL_DATABASE: mt_test
-      MYSQL_USER: mt
-      MYSQL_PASSWORD: password
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-
-  memcached:
-    image: memcached:alpine
-    ports:
-      - 11211:11211
-    network_mode: host
+    command: bash -c "bash ../preprocess.sh && prove -j4 -PMySQLPool=MT::Test::Env -It/lib t plugins/*/t && phpunit"
 

@@ -1,8 +1,12 @@
 #!/bin/sh
 
-apt-get update
-apt-get install -y --no-install-recommends mysql-client
+set -eu
+
+find /var/lib/mysql -type f | xargs touch && service mysql start
+service memcached start
 
 while ! nc -z localhost 3306; do sleep 3; done
-mysql -e 'set password for mt = "";'
+
+mysql -e "create database mt_test character set utf8;"
+mysql -e "grant all privileges on mt_test.* to mt@localhost;"
 
