@@ -5,7 +5,6 @@ COPY movabletype/t/cpanfile .
 
 RUN apt-get update &&\
 \
- DEBIAN_FRONTEND=noninteractive\
  apt-get -y install\
   apache2\
   php5 php5-cli php5-mysql php5-gd php5-memcache phpunit\
