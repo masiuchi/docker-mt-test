@@ -4,12 +4,13 @@ volumes:
   mysql_socket:
 
 services:
-  app:
+  mt-test:
     build: .
     volumes:
-      - ./movabletype:/root/movabletype
+      - ./:/root
       - mysql_socket:/var/run/mysqld
     working_dir: /root/movabletype
+    command: bash -c "bash ../preprocess.sh && prove t plugins/*/t && phpunit"
     network_mode: host
     depends_on:
       - mysql
