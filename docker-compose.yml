@@ -1,44 +1,17 @@
 version: '3'
 
-volumes:
-  mysql_socket:
-
 services:
   mt-test:
     build: .
-    volumes:
-      - mysql_socket:/var/run/mysqld
     working_dir: /root
     command: >-
       bash -c "set -eu &&
-      apt-get update &&
-      apt-get install -y mysql-client netcat &&
+
+      service mysql start &&
+      service memcached start &&
+
       git clone -b develop --depth 1 https://github.com/movabletype/movabletype &&
       cd movabletype &&
-      while ! nc -z localhost 3306; do sleep 3; done &&
-      mysql -e 'set password for mt = \"\";' &&
-      prove t plugins/*/t && phpunit"
-    network_mode: host
-    depends_on:
-      - mysql
-      - memcached
 
-  mysql:
-    image: mysql:5.7
-    volumes:
-      - mysql_socket:/var/run/mysqld
-    ports:
-      - 3306:3306
-    network_mode: host
-    environment:
-      MYSQL_DATABASE: mt_test
-      MYSQL_USER: mt
-      MYSQL_PASSWORD: password
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-
-  memcached:
-    image: memcached:alpine
-    ports:
-      - 11211:11211
-    network_mode: host
+      prove -j4 -PMySQLPool=MT::Test::Env -It/lib t plugins/*/t && phpunit"
 
