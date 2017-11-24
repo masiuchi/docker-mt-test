@@ -7,10 +7,17 @@ services:
   mt-test:
     build: .
     volumes:
-      - ./:/root
       - mysql_socket:/var/run/mysqld
-    working_dir: /root/movabletype
-    command: bash -c "bash ../preprocess.sh && prove t plugins/*/t && phpunit"
+    working_dir: /root
+    command: >-
+      bash -c "set -eu &&
+      apt-get update &&
+      apt-get install -y mysql-client netcat &&
+      git clone -b develop --depth 1 https://github.com/movabletype/movabletype &&
+      cd movabletype &&
+      while ! nc -z localhost 3306; do sleep 3; done &&
+      mysql -e 'set password for mt = \"\";' &&
+      prove t plugins/*/t && phpunit"
     network_mode: host
     depends_on:
       - mysql
