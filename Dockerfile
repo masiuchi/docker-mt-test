@@ -4,7 +4,6 @@ WORKDIR /root
 COPY movabletype/t/cpanfile .
 
 RUN yum -y install\
- httpd\
  gcc curl\
  perl perl-core\
  ImageMagick-perl perl-GD perl-XML-Parser\
