@@ -14,7 +14,7 @@ RUN yum -y install\
 # for DBD::mysql
  mysql-devel\
 # for Imager
- giflib-devel\
+ giflib-devel libpng-devel libjpeg-devel\
 # for Math::GMP
  gmp-devel\
 # for Net::SSLeay
