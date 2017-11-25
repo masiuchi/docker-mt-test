@@ -23,7 +23,9 @@ RUN yum -y install\
  libxml2-devel\
 # for XML::SAX::ExpatXS
  expat-devel\
- php php-mysql php-gd php-pecl-memcache phpunit\
+ php php-mysql php-gd php-pecl-memcache\
+ epel-release &&\
+ yum -y install phpunit &&\
  yum clean all &&\
 # PHP setting
  sed -i 's/^;date\.timezone =/date\.timezone = "Asia\/Tokyo"/' /etc/php.ini &&\
