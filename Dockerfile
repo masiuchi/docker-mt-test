@@ -25,12 +25,14 @@ RUN yum -y install\
  expat-devel\
  php php-mysql php-gd php-pecl-memcache phpunit\
  yum clean all &&\
-\
+# PHP setting
+ sed -i 's/^;date\.timezone =/date\.timezone = "Asia\/Tokyo"/' /etc/php.ini &&\
+# PhantomJS
  curl -sLO https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2 &&\
  tar jxf phantomjs-1.9.8-linux-x86_64.tar.bz2 &&\
  cp phantomjs-1.9.8-linux-x86_64/bin/phantomjs /usr/local/bin/ &&\
  rm -rf phantomjs-1.9.8-linux-x86_64* &&\
-\
+# CPAN modules
  curl -sL --compressed https://git.io/cpm > cpm &&\
  chmod +x cpm &&\
  mv cpm /usr/local/bin/ &&\
