@@ -24,7 +24,8 @@ RUN yum -y install\
  libxml2-devel\
 # for XML::SAX::ExpatXS
  expat-devel\
- php php-mysql php-gd php-pecl-memcache phpunit &&\
+ php php-mysql php-gd php-pecl-memcache phpunit\
+ yum clean all &&\
 \
  curl -sLO https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2 &&\
  tar jxf phantomjs-1.9.8-linux-x86_64.tar.bz2 &&\
