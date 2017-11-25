@@ -1,4 +1,0 @@
-FROM mysql:5.7
-RUN sed -i -e\
- "s/\/var\/run\/mysqld\/mysqld.sock/\/var\/lib\/mysql\/mysql.sock/"\
- /etc/mysql/mysql.conf.d/mysqld.cnf
