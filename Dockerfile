@@ -19,5 +19,5 @@ RUN apt-get update &&\
  mv cpm /usr/local/bin/ &&\
  cpm install -g --test JSON::XS TAP::Harness::Env Test::Base &&\
  cpm install -g --test &&\
- rm -rf cpanfile /root/.cpm/
+ rm -rf cpanfile /root/.perl-cpm/
 
