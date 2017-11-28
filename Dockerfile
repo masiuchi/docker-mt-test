@@ -1,7 +1,7 @@
 FROM ubuntu:trusty
 
 WORKDIR /root
-COPY movabletype/t/cpanfile .
+COPY movabletype/t/cpanfile /root/cpanfile
 
 RUN apt-get update &&\
 \
