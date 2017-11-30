@@ -16,4 +16,5 @@ RUN yum -y install openldap-servers openldap-clients\
  && chown -R ldap:ldap /var/lib/ldap/
 
 CMD ['slapd', '-d', '0']
+EXPOSE 389
 
