@@ -1,10 +1,10 @@
-FROM centos:6
+FROM centos:7
 
 WORKDIR /root
 COPY movabletype/t/cpanfile .
 
 RUN yum -y install\
- gcc curl\
+ make gcc curl bzip2\
  perl perl-core\
  ImageMagick-perl perl-GD perl-XML-Parser\
 # NetPBM driver
@@ -18,7 +18,7 @@ RUN yum -y install\
 # for Math::GMP
  gmp-devel\
 # for Net::SSLeay
- openssl-devel\
+ openssl openssl-devel\
 # for XML::LibXML
  libxml2-devel\
 # for XML::SAX::ExpatXS
