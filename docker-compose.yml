@@ -1,42 +1,14 @@
 version: '3'
 
-volumes:
-  mysql_socket:
-
 services:
   mt-test:
     build: .
-    volumes:
-      - mysql_socket:/var/lib/mysql
-    network_mode: host
     working_dir: /root
     command: >-
-      bash -c "set -eu &&
-      yum install -y nc git &&
+      bash -c "yum install -y git &&
       git clone -b develop --depth 1 https://github.com/movabletype/movabletype &&
       cd movabletype &&
-      while ! nc -z localhost 3306; do sleep 3; done &&
-      mysql -e 'set password for mt = \"\";' &&
-      prove t plugins/*/t && phpunit"
-    depends_on:
-      - mysql
-      - memcached
+      service mysqld start &&
+      service memcached start &&
+      prove -j4 -PMySQLPool=MT::Test::Env -It/lib t plugins/*/t && phpunit"
 
-  mysql:
-    build:
-      context: .
-      dockerfile: Dockerfile.mysql
-    volumes:
-      - mysql_socket:/var/lib/mysql
-    network_mode: host
-    environment:
-      MYSQL_DATABASE: mt_test
-      MYSQL_USER: mt
-      MYSQL_PASSWORD: password
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-
-  memcached:
-    image: memcached:alpine
-    ports:
-      - 11211:11211
-    network_mode: host
