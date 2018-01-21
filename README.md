@@ -1,6 +1,10 @@
 # docker-mt-test
 Dockerfile for test MT.
 
+## Usage
+
+Please see [docker-compose.yml](https://github.com/masiuchi/docker-mt-test/blob/stretch/docker-compose.yml)
+
 ## Environment
 
 * Debian 9 (Stretch)
