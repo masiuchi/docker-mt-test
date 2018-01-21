@@ -1,6 +1,10 @@
 # docker-mt-test
 Dockerfile for test MT.
 
+## Usage
+
+Please see [docker-compose.yml](https://github.com/masiuchi/docker-mt-test/blob/centos6-full/docker-compose.yml)
+
 ## Environment
 
 * Base image is [masiuchi/docker-mt-test:centos6](https://github.com/masiuchi/docker-mt-test/tree/centos6)
