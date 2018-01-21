@@ -3,7 +3,7 @@ Dockerfile for test MT.
 
 ## Environment
 
-* Base image is masiuchi/docker-mt-test:stretch
+* Base image is [masiuchi/docker-mt-test:stretch](https://github.com/masiuchi/docker-mt-test/tree/stretch)
 * MariaDB 10.1.26
 * Memcached 1.4.33
 
