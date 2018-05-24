@@ -49,5 +49,5 @@ RUN yum -y install\
 # for Test::Differences
   Capture::Tiny Text::Diff &&\
  cpm install -g --test &&\
- rm -rf cpanfile /root/.cpm
+ rm -rf cpanfile /root/.cpm /root/.perl-cpm /root/.qws
 
