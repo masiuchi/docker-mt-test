@@ -3,12 +3,15 @@ version: '3'
 services:
   mt-test:
     build: .
+    privileged: true
     working_dir: /root
     command: >-
       bash -c "yum install -y git &&
       git clone -b develop --depth 1 https://github.com/movabletype/movabletype &&
       cd movabletype &&
-      service mysqld start &&
-      service memcached start &&
+      systemctl start mysqld &&
+      systemctl start memcached &&
+      mysql -e 'create database mt_test character set utf8;' &&
+      mysql -e 'grant all privileges on mt_test.* to mt@localhost;' &&
       prove -j4 -PMySQLPool=MT::Test::Env -It/lib t plugins/*/t && phpunit"
 
