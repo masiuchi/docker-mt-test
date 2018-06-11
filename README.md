@@ -17,4 +17,5 @@ Dockerfile for test MT.
 |[masiuchi/docker-mt-test:stretch](https://github.com/masiuchi/docker-mt-test/tree/stretch)|debian:stretch|5.24.1|7.0.19-1|-|-|-|
 |[masiuchi/docker-mt-test:stretch-full](https://github.com/masiuchi/docker-mt-test/tree/stretch-full)|masiuchi/docker-mt-test:stretch|5.24.1|7.0.19-1|MariaDB 10.1.26|1.4.33|-|
 |[masiuchi/docker-mt-test:bionic](https://github.com/masiuchi/docker-mt-test/tree/bionic)|ubuntu:bionic|5.26.1|7.2.3|-|-|-|
+|[masiuchi/docker-mt-test:bionic-full](https://github.com/masiuchi/docker-mt-test/tree/bionic)|ubuntu:bionic|5.26.1|7.2.3|5.7.12|1.5.6|-|
 |[masiuchi/docker-mt-test:openldap](https://github.com/masiuchi/docker-mt-test/tree/openldap)|centos:6|-|-|-|-|2.4.40|
