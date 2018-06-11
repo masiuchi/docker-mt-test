@@ -1,4 +1,4 @@
-FROM masiuchi/docker-mt-test:trusty
+FROM masiuchi/docker-mt-test:bionic
 
 RUN apt-get update &&\
 \
@@ -10,5 +10,6 @@ RUN apt-get update &&\
 \
  service mysql start &&\
  mysql -e "create database mt_test character set utf8;" &&\
- mysql -e "grant all privileges on mt_test.* to mt@localhost;"
+ mysql -e "grant all privileges on mt_test.* to mt@localhost identified by 'password';" &&\
+ mysql -e "set password for mt@localhost = '';"
 
