@@ -1,4 +1,6 @@
 .git
+docker-compose.yml
 Makefile
+README.md
 movabletype
 !movabletype/t/cpanfile
