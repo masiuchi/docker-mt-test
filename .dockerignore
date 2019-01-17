@@ -1,5 +1,6 @@
 .git
 .cpanm
 .perl-cpm
+Makefile
 movabletype
 !movabletype/t/cpanfile
