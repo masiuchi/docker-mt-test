@@ -1,3 +1,4 @@
 .git
+Makefile
 movabletype
 !movabletype/t/cpanfile
