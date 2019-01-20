@@ -1,8 +1,5 @@
 FROM masiuchi/docker-mt-test:trusty
 
-COPY ./docker-entrypoint.sh /
-ENTRYPOINT ["/docker-entrypoint.sh"]
-
 RUN apt-get update &&\
 \
  DEBIAN_FRONTEND=noninteractive\
@@ -14,4 +11,7 @@ RUN apt-get update &&\
  service mysql start &&\
  mysql -e "create database mt_test character set utf8;" &&\
  mysql -e "grant all privileges on mt_test.* to mt@localhost;"
+
+COPY ./docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
