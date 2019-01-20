@@ -8,7 +8,5 @@ services:
       bash -c "yum install -y git &&
       git clone -b develop --depth 1 https://github.com/movabletype/movabletype &&
       cd movabletype &&
-      service mysqld start &&
-      service memcached start &&
       prove -j4 -PMySQLPool=MT::Test::Env -It/lib t plugins/*/t && phpunit"
 
