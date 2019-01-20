@@ -5,11 +5,7 @@ services:
     build: .
     working_dir: /root
     command: >-
-      bash -c "find /var/lib/mysql -type f | xargs touch &&
-      service mysql start &&
-      service memcached start &&
-
-      git clone -b develop --depth 1 https://github.com/movabletype/movabletype &&
+      bash -c "git clone -b develop --depth 1 https://github.com/movabletype/movabletype &&
       cd movabletype &&
 
       prove -j4 -PMySQLPool=MT::Test::Env -It/lib t plugins/*/t && phpunit"

@@ -1,5 +1,8 @@
 FROM masiuchi/docker-mt-test:trusty
 
+COPY ./docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
 RUN apt-get update &&\
 \
  DEBIAN_FRONTEND=noninteractive\
