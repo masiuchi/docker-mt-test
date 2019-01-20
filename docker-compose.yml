@@ -7,9 +7,6 @@ services:
     command: >-
       bash -c "set -eu &&
 
-      service mysql start &&
-      service memcached start &&
-
       git clone -b develop --depth 1 https://github.com/movabletype/movabletype &&
       cd movabletype &&
 
