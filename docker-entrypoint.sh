@@ -6,7 +6,7 @@ service mysql start
 service memcached start
 
 if [ -f t/cpanfile ]; then
-    cpm install -g --test --cpantile=t/cpanfile
+    cpm install -g --test --cpanfile=t/cpanfile
 fi
 
 exec "$@"
