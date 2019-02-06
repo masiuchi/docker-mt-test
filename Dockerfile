@@ -1,4 +1,4 @@
-FROM masiuchi/docker-mt-test:bionic
+FROM masiuchi/docker-mt-test:disco
 
 RUN apt-get update &&\
 \
