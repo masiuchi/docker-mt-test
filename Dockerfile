@@ -12,5 +12,4 @@ RUN apt-get update &&\
  mysql -e "create database mt_test character set utf8;" &&\
  mysql -e "grant all privileges on mt_test.* to mt@localhost identified by 'password';" &&\
  mysql -e "set password for mt@localhost = '';" &&\
- service mysql stop
 
