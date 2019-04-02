@@ -9,7 +9,7 @@ RUN apt-get update &&\
   apache2\
   php5 php5-cli php5-mysql php5-gd php5-memcache phpunit\
   git make gcc wget curl unzip bzip2\
-  perl perlmagick\
+  perl perlmagick libwww-perl\
   phantomjs\
   libssl-dev libgmp-dev libgd2-xpm-dev libpng12-dev libgif-dev libjpeg-dev netpbm libxml2-dev libmysql++-dev libgif-dev libdb-dev &&\
  apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* &&\
