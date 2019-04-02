@@ -19,5 +19,8 @@ RUN apt-get update &&\
  mv cpm /usr/local/bin/ &&\
  cpm install -g --test JSON::XS TAP::Harness::Env Test::Base &&\
  cpm install -g --test &&\
- rm -rf cpanfile /root/.perl-cpm/ /root/.qws/
+ rm -rf cpanfile /root/.perl-cpm/ /root/.qws/ &&\
+ curl -sL https://phar.phpunit.de/phpunit-4.8.36.phar > phpunit &&\
+ chmod +x phpunit &&\
+ mv phpunit /usr/local/bin/
 
