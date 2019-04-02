@@ -13,3 +13,5 @@ RUN apt-get update &&\
  mysql -e "grant all privileges on mt_test.* to mt@localhost identified by 'password';" &&\
  mysql -e "set password for mt@localhost = '';" &&\
 
+COPY ./docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
