@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-service mysqld start
+service mysql start
 service memcached start
 
 if [ -f t/cpanfile ]; then
