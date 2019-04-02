@@ -49,5 +49,8 @@ RUN yum -y install\
 # for Test::Differences
   Capture::Tiny Text::Diff &&\
  cpm install -g --test &&\
- rm -rf cpanfile /root/.cpm /root/.perl-cpm /root/.qws
-
+ rm -rf cpanfile /root/.cpm /root/.perl-cpm /root/.qws &&\
+# latest PHPUnit that supports both PHPUnit\Framework\TestCase namespace and PHP 5.3
+ curl -sL https://phar.phpunit.de/phpunit-4.8.36.phar > phpunit &&\
+ chmod +x phpunit &&\
+ mv phpunit /usr/local/bin/
