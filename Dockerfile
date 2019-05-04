@@ -50,7 +50,8 @@ RUN yum -y install\
   DBD::SQLite\
 # for Test::Differences
   Capture::Tiny Text::Diff &&\
- cpm install -g --test &&\
+ cpm install -g LWP::UserAgent &&\
+ cpm install -w 1 -g --test &&\
  rm -rf cpanfile /root/.cpm /root/.perl-cpm /root/.qws &&\
 # latest PHPUnit that supports both PHPUnit\Framework\TestCase namespace and PHP 5.3
  curl -sL https://phar.phpunit.de/phpunit-4.8.36.phar > phpunit &&\
