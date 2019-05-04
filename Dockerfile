@@ -34,11 +34,9 @@ RUN yum -y install\
  cp phantomjs-1.9.8-linux-x86_64/bin/phantomjs /usr/local/bin/ &&\
  rm -rf phantomjs-1.9.8-linux-x86_64* &&\
 # CPAN modules
- curl -sL --compressed https://git.io/cpm > cpm &&\
- chmod +x cpm &&\
- mv cpm /usr/local/bin/ &&\
+ curl -L http://cpanmin.us | perl - App::cpanminus &&\
  curl -sLO https://raw.githubusercontent.com/movabletype/movabletype/5e636cc16c7c3f96215c8f52d2715cfd835e5584/t/cpanfile &&\
- cpm install -g --test\
+ cpanm\
 # for Perl::Critic
   PPI@1.246\
 # Installing Devel::GlobalPhase@0.003000 fails
@@ -50,9 +48,9 @@ RUN yum -y install\
   DBD::SQLite\
 # for Test::Differences
   Capture::Tiny Text::Diff &&\
- cpm install -g LWP::UserAgent &&\
- cpm install -w 1 -g --test &&\
- rm -rf cpanfile /root/.cpm /root/.perl-cpm /root/.qws &&\
+ cpanm --notest LWP::UserAgent &&\
+ cpanm --installdeps . &&\
+ rm -rf cpanfile /root/.cpm /root/.perl-cpm /root/.cpanm /root/.qws &&\
 # latest PHPUnit that supports both PHPUnit\Framework\TestCase namespace and PHP 5.3
  curl -sL https://phar.phpunit.de/phpunit-4.8.36.phar > phpunit &&\
  chmod +x phpunit &&\
