@@ -39,6 +39,8 @@ RUN yum -y install\
  mv cpm /usr/local/bin/ &&\
  wget https://raw.githubusercontent.com/movabletype/movabletype/5e636cc16c7c3f96215c8f52d2715cfd835e5584/t/cpanfile &&\
  cpm install -g --test\
+# for Perl::Critic
+  PPI@1.246\
 # Installing Devel::GlobalPhase@0.003000 fails
   Devel::GlobalPhase@0.002004\
   JSON::XS\
