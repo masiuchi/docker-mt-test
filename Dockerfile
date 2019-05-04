@@ -1,7 +1,6 @@
 FROM centos:6
 
 WORKDIR /root
-COPY movabletype/t/cpanfile .
 
 RUN yum -y install\
  gcc curl\
@@ -38,6 +37,7 @@ RUN yum -y install\
  curl -sL --compressed https://git.io/cpm > cpm &&\
  chmod +x cpm &&\
  mv cpm /usr/local/bin/ &&\
+ wget https://raw.githubusercontent.com/movabletype/movabletype/5e636cc16c7c3f96215c8f52d2715cfd835e5584/t/cpanfile &&\
  cpm install -g --test\
 # Installing Devel::GlobalPhase@0.003000 fails
   Devel::GlobalPhase@0.002004\
