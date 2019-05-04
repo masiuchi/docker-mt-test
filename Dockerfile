@@ -16,7 +16,7 @@ RUN apt-get update &&\
  curl -sL --compressed https://git.io/cpm > cpm &&\
  chmod +x cpm &&\
  mv cpm /usr/local/bin/ &&\
- cpm install -g --test JSON::XS TAP::Harness::Env Test::Base &&\
+ cpm install -g --test JSON::XS TAP::Harness::Env Test::Base PPI@1.246 &&\
  wget https://raw.githubusercontent.com/movabletype/movabletype/5e636cc16c7c3f96215c8f52d2715cfd835e5584/t/cpanfile &&\
  cpm install -g --test &&\
  rm -rf cpanfile /root/.perl-cpm/ /root/.qws/ &&\
