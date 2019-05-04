@@ -1,7 +1,6 @@
 FROM ubuntu:trusty
 
 WORKDIR /root
-COPY movabletype/t/cpanfile /root/cpanfile
 
 RUN apt-get update &&\
 \
@@ -18,6 +17,7 @@ RUN apt-get update &&\
  chmod +x cpm &&\
  mv cpm /usr/local/bin/ &&\
  cpm install -g --test JSON::XS TAP::Harness::Env Test::Base &&\
+ wget https://raw.githubusercontent.com/movabletype/movabletype/5e636cc16c7c3f96215c8f52d2715cfd835e5584/t/cpanfile &&\
  cpm install -g --test &&\
  rm -rf cpanfile /root/.perl-cpm/ /root/.qws/ &&\
  curl -sL https://phar.phpunit.de/phpunit-4.8.36.phar > phpunit &&\
