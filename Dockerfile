@@ -1,4 +1,4 @@
-FROM masiuchi/docker-mt-test:perl-5.30
+FROM masiuchi/docker-mt-test:perl-5.30-RC2
 
 RUN apt-get update &&\
 \
