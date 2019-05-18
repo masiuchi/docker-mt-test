@@ -21,5 +21,9 @@ RUN apt-get update &&\
  cpanm JSON::XS TAP::Harness::Env Test::Base PPI@1.246 &&\
  wget https://raw.githubusercontent.com/movabletype/movabletype/5e636cc16c7c3f96215c8f52d2715cfd835e5584/t/cpanfile &&\
  cpanm --installdeps . &&\
- rm -rf cpanfile /root/.cpanm/
+ rm -rf cpanfile /root/.cpanm/ &&\
+\
+ curl -sL https://phar.phpunit.de/phpunit-4.8.36.phar > phpunit &&\
+ chmod +x phpunit &&\
+ mv phpunit /usr/local/bin/
 
