@@ -1,4 +1,4 @@
-FROM masiuchi/perl:jessie
+FROM masiuchi/perl:jessie-5.30
 
 WORKDIR /root
 
