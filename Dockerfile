@@ -18,7 +18,7 @@ RUN apt-get update &&\
   rm -rf /phantomjs-1.9.8-linux-x86_64* &&\
 \
  curl -L https://cpanmin.us | perl - App::cpanminus &&\
- cpanm JSON::XS TAP::Harness::Env Test::Base PPI@1.246 &&\
+ cpanm JSON::XS TAP::Harness::Env Test::Base PPI@1.246 XMLRPC::Transport::HTTP Wight &&\
  wget https://raw.githubusercontent.com/movabletype/movabletype/5e636cc16c7c3f96215c8f52d2715cfd835e5584/t/cpanfile &&\
  cpanm --installdeps . &&\
  rm -rf cpanfile /root/.cpanm/ &&\
