@@ -1,9 +1,9 @@
-FROM centos:7
+FROM fedora:31
 
 WORKDIR /root
 COPY movabletype/t/cpanfile .
 
-RUN yum -y install\
+RUN dnf -y install\
  make gcc curl bzip2\
  perl perl-core\
  ImageMagick-perl perl-GD perl-XML-Parser\
@@ -23,10 +23,9 @@ RUN yum -y install\
  libxml2-devel\
 # for XML::SAX::ExpatXS
  expat-devel\
- php php-mysql php-gd php-pecl-memcache\
- epel-release &&\
- yum -y install phpunit &&\
- yum clean all &&\
+ php php-mysqlnd php-gd php-pecl-memcache &&\
+ dnf -y install phpunit &&\
+ dnf clean all &&\
 # PHP setting
  sed -i 's/^;date\.timezone =/date\.timezone = "Asia\/Tokyo"/' /etc/php.ini &&\
 # PhantomJS
